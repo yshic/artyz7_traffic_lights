@@ -15,3 +15,7 @@ This project is part of the assignment for the course Logic Design at HCMUT
 ## Design
 ### Block diagram
 ![Block diagram](/img/blockdiagram.jpg)
+### State diagram]
+![State diagram](/img/statediagram.jpg)
+### Flowchart
+![Flowchart](/img/flowchart.jpg)
