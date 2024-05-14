@@ -1,0 +1,297 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:03:12 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Mon Aug 14 13:46:23 2023
+# Process ID: 6524
+# Current directory: C:/Users/Papa/Desktop/VHDL/assignment/traffic_light
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent1164 C:\Users\Papa\Desktop\VHDL\assignment\traffic_light\traffic_light.xpr
+# Log file: C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/vivado.log
+# Journal file: C:/Users/Papa/Desktop/VHDL/assignment/traffic_light\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2018.2/data/ip'.
+open_project: Time (s): cpu = 00:00:25 ; elapsed = 00:00:15 . Memory (MB): peak = 789.188 ; gain = 66.891
+update_compile_order -fileset sources_1
+close [ open C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.srcs/sources_1/new/display.v w ]
+add_files C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.srcs/sources_1/new/display.v
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+[Mon Aug 14 14:16:08 2023] Launched synth_1...
+Run output will be captured here: C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.runs/synth_1/runme.log
+[Mon Aug 14 14:16:08 2023] Launched impl_1...
+Run output will be captured here: C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+[Mon Aug 14 14:22:58 2023] Launched synth_1...
+Run output will be captured here: C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.runs/synth_1/runme.log
+[Mon Aug 14 14:22:58 2023] Launched impl_1...
+Run output will be captured here: C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+[Mon Aug 14 14:29:14 2023] Launched synth_1...
+Run output will be captured here: C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.runs/synth_1/runme.log
+[Mon Aug 14 14:29:14 2023] Launched impl_1...
+Run output will be captured here: C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.runs/impl_1/runme.log
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+export_ip_user_files -of_objects  [get_files C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.srcs/sources_1/new/display.v] -no_script -reset -force -quiet
+remove_files  C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.srcs/sources_1/new/display.v
+file delete -force C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.srcs/sources_1/new/display.v
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'traffic_light_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj traffic_light_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.srcs/sources_1/new/traffic_light.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module traffic_light
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.srcs/sim_1/new/traffic_light_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module traffic_light_tb
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.sim/sim_1/behav/xsim'
+Vivado Simulator 2018.2
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2018.2/bin/unwrapped/win64.o/xelab.exe -wto cb8e59aaace449afb31a7b903027f88e --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot traffic_light_tb_behav xil_defaultlib.traffic_light_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4099] "C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.srcs/sources_1/new/traffic_light.v" Line 1. Module traffic_light doesn't have a timescale but at least one module in design has a timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.traffic_light
+Compiling module xil_defaultlib.traffic_light_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot traffic_light_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "traffic_light_tb_behav -key {Behavioral:sim_1:Functional:traffic_light_tb} -tclbatch {traffic_light_tb.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2018.2
+Time resolution is 1 ps
+source traffic_light_tb.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+Time: 0, switch0: x, btn0: x, btn1: x, btn2: x, seg1: xxxxxxx, seg2: xxxxxxx, led1: xxx, led2: xxx
+Time: 11000, switch0: 1, btn0: x, btn1: x, btn2: x, seg1: xxxxxxx, seg2: xxxxxxx, led1: xxx, led2: xxx
+Time: 31000, switch0: 0, btn0: x, btn1: x, btn2: x, seg1: xxxxxxx, seg2: xxxxxxx, led1: xxx, led2: xxx
+Time: 36000, switch0: 0, btn0: x, btn1: x, btn2: x, seg1: 1111111, seg2: 1111111, led1: 000, led2: 000
+Time: 61000, switch0: 0, btn0: 0, btn1: 1, btn2: 0, seg1: 1111111, seg2: 1111111, led1: 000, led2: 000
+Time: 111000, switch0: 0, btn0: 0, btn1: 0, btn2: 0, seg1: 1111111, seg2: 1111111, led1: 000, led2: 000
+Time: 121000, switch0: 0, btn0: 1, btn1: 0, btn2: 0, seg1: 1111111, seg2: 1111111, led1: 000, led2: 000
+Time: 171000, switch0: 0, btn0: 0, btn1: 0, btn2: 0, seg1: 1111111, seg2: 1111111, led1: 000, led2: 000
+Time: 181000, switch0: 0, btn0: 0, btn1: 0, btn2: 1, seg1: 1111111, seg2: 1111111, led1: 000, led2: 000
+Time: 201000, switch0: 0, btn0: 0, btn1: 0, btn2: 0, seg1: 1111111, seg2: 1111111, led1: 000, led2: 000
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'traffic_light_tb_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:05 ; elapsed = 00:00:10 . Memory (MB): peak = 850.355 ; gain = 19.211
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.runs/synth_1
+
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+[Mon Aug 14 14:53:18 2023] Launched synth_1...
+Run output will be captured here: C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.runs/synth_1/runme.log
+[Mon Aug 14 14:53:18 2023] Launched impl_1...
+Run output will be captured here: C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.runs/impl_1/runme.log
+open_hw
+connect_hw_server
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-2222] Launching hw_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+****** Xilinx hw_server v2018.2
+  **** Build date : Jun 14 2018-20:42:52
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/003017B3F8BEA
+INFO: [Common 17-41] Interrupt caught. Command should exit soon.
+ERROR: [Labtools 27-3419] Disconnecting from hw_server since it's not responding to requests.  It is recommended to investigate hw_server to find any issues.
+open_hw_target: Time (s): cpu = 00:00:04 ; elapsed = 00:00:56 . Memory (MB): peak = 1524.344 ; gain = 665.148
+INFO: [Common 17-344] 'open_hw_target' was cancelled
+ERROR: [Labtoolstcl 44-513] HW Target shutdown. Closing target: localhost:3121/xilinx_tcf/Digilent/003017B3F8BEA
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/003017B3F8BEA
+WARNING: [Labtoolstcl 44-129] No matching hw_ila_data was found.
+INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+WARNING: [Labtoolstcl 44-129] No matching hw_ila_data was found.
+set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.runs/impl_1/traffic_light.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.runs/synth_1
+
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+[Mon Aug 14 15:00:06 2023] Launched synth_1...
+Run output will be captured here: C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.runs/synth_1/runme.log
+[Mon Aug 14 15:00:06 2023] Launched impl_1...
+Run output will be captured here: C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.runs/impl_1/runme.log
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.runs/synth_1
+
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+[Mon Aug 14 15:11:09 2023] Launched synth_1...
+Run output will be captured here: C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.runs/synth_1/runme.log
+[Mon Aug 14 15:11:09 2023] Launched impl_1...
+Run output will be captured here: C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.runs/impl_1/runme.log
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.runs/impl_1/traffic_light.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.runs/synth_1
+
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+[Mon Aug 14 15:20:40 2023] Launched synth_1...
+Run output will be captured here: C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.runs/synth_1/runme.log
+[Mon Aug 14 15:20:40 2023] Launched impl_1...
+Run output will be captured here: C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.runs/impl_1/runme.log
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.runs/impl_1/traffic_light.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.runs/synth_1
+
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+[Mon Aug 14 15:41:14 2023] Launched synth_1...
+Run output will be captured here: C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.runs/synth_1/runme.log
+[Mon Aug 14 15:41:14 2023] Launched impl_1...
+Run output will be captured here: C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.runs/impl_1/runme.log
+ERROR: [Labtoolstcl 44-513] HW Target shutdown. Closing target: localhost:3121/xilinx_tcf/Digilent/003017B3F8BEA
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/003017B3F8BEA
+WARNING: [Labtoolstcl 44-129] No matching hw_ila_data was found.
+INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+WARNING: [Labtoolstcl 44-129] No matching hw_ila_data was found.
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.runs/impl_1/traffic_light.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+ERROR: [Labtoolstcl 44-513] HW Target shutdown. Closing target: localhost:3121/xilinx_tcf/Digilent/003017B3F8BEA
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/003017B3F8BEA
+WARNING: [Labtoolstcl 44-129] No matching hw_ila_data was found.
+INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+WARNING: [Labtoolstcl 44-129] No matching hw_ila_data was found.
+ERROR: [Labtoolstcl 44-513] HW Target shutdown. Closing target: localhost:3121/xilinx_tcf/Digilent/003017B3F8BEA
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/003017B3F8BEA
+WARNING: [Labtoolstcl 44-129] No matching hw_ila_data was found.
+INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+WARNING: [Labtoolstcl 44-129] No matching hw_ila_data was found.
+set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {C:/Users/Papa/Desktop/VHDL/assignment/traffic_light/traffic_light.runs/impl_1/traffic_light.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+exit
+INFO: [Common 17-206] Exiting Vivado at Mon Aug 14 15:49:13 2023...

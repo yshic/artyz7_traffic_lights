@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:03:12 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Thu Jan 11 10:51:24 2024
+# Process ID: 7380
+# Current directory: C:/Users/Papa/Desktop/2/HK223/Verilog/Labs/Assignment/assignment/traffic_light/traffic_light.runs/impl_1
+# Command line: vivado.exe -log traffic_light.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source traffic_light.tcl -notrace
+# Log file: C:/Users/Papa/Desktop/2/HK223/Verilog/Labs/Assignment/assignment/traffic_light/traffic_light.runs/impl_1/traffic_light.vdi
+# Journal file: C:/Users/Papa/Desktop/2/HK223/Verilog/Labs/Assignment/assignment/traffic_light/traffic_light.runs/impl_1\vivado.jou
+#-----------------------------------------------------------
+source traffic_light.tcl -notrace

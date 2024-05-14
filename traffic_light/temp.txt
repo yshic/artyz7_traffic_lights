@@ -1,0 +1,304 @@
+module traffic_light(
+    input clk,             // clock signal (125MHz)
+    input rst,             // reset signal
+    input sw0,             // Turn on/off
+    input [2:0] btn,       // btn0 = unpause | btn1 = pause | btn2 = Caution mode
+    output reg [6:0] seg1, // first 7-segment display
+    output reg [6:0] seg2, // second 7-segment display
+    output reg [2:0] led1, // RGB LED for vehicle traffic on the current road
+    output reg [2:0] led2  // RGB LED for vehicle traffic on the intersecting road
+);
+
+// state definitions
+localparam [2:0]
+    RED1 = 3'b000,
+    RED2 = 3'b001,
+    GREEN = 3'b010,
+    YELLOW = 3'b011,
+    YELLOW2 = 3'b100;
+
+// state register
+reg [2:0] state;
+
+// timer register (7-bit to accommodate values up to 99)
+reg [6:0] timer;
+
+// pause register
+reg pause;
+
+// flashing yellow register
+reg flash_yellow;
+
+// flashing yellow counter
+reg [31:0] flash_cnt;
+
+// flash yellow period
+localparam FLASH_PERIOD = 250_000_000; //2 second
+
+// clock divider (125MHz / 1Hz = 125_000_000)
+localparam CLK_DIV = 125_000_000;
+reg [31:0] clk_cnt;
+
+// 7-segment display lookup table (active-low)
+//reg [6:0] seg_lut;
+//initial begin
+//    seg_lut[0] = 7'b1000000;
+//    seg_lut[1] = 7'b1111001;
+//    seg_lut[2] = 7'b0100100;
+//    seg_lut[3] = 7'b0110000;
+//    seg_lut[4] = 7'b0011001;
+//    seg_lut[5] = 7'b0010010;
+//    seg_lut[6] = 7'b0000010;
+//    seg_lut[7] = 7'b1111000;
+//    seg_lut[8] = 7'b0000000;
+//    seg_lut[9] = 7'b0010000;
+//    seg_lut[10] = 7'b1111111; //Off
+//end
+
+
+// state machine
+always @(posedge clk) begin
+    if(!sw0) begin
+        led1 <= 3'b000;
+        led2 <= 3'b000;
+        seg2 <= 7'b1111111;
+        seg1 <= 7'b1111111;
+    end else if (rst) begin
+        state <= RED1;
+        timer <= 15;         // red light lasts for 15 seconds
+        led1 <= 3'b001;     // red light on for vehicle traffic on the current road
+        led2 <= 3'b010;     // green light on for vehicle traffic on the intersecting road
+        seg2 <= 7'b1111001; // 1
+        seg1 <= 7'b0010010; // 5
+        clk_cnt <= 0;
+        pause <= 0;         // initialize pause to 0 (not paused)
+        flash_yellow <= 0;  // initialzie flash yellow to 0 (not flashing)
+        flash_cnt <= FLASH_PERIOD - 1;
+    end else begin
+        if(btn[1]) begin          // if btn1 is pressed, set pause to true (paused)
+            pause <= 1;     
+        end else if(btn[0]) begin // if btn0 is pressed, set pause to false (not paused)
+            pause <= 0;
+        end
+        if(!pause) begin
+            if(!flash_yellow) begin
+                if (clk_cnt == CLK_DIV - 1) begin
+                    clk_cnt <= 0;
+                    case (state)
+                        RED1: begin
+                        if (timer == 0) begin
+                            state <= RED2;
+                            timer <= 5;    // yellow light lasts for 5 seconds
+                            led1 <= flash_yellow ? ((flash_cnt < FLASH_PERIOD / 2) ? 3'b011 : 3'b000) : 3'b001; // still red light for vehicle traffic on the current road (if not flashing)
+                            led2 <= flash_yellow ? ((flash_cnt < FLASH_PERIOD / 2) ? 3'b011 : 3'b000) : 3'b011; // yellow light on for vehicle traffic on the intersecting road (if not flashing)
+                            seg2 <= flash_yellow ? 7'b1111111 : 7'b1000000;  // 0
+                            seg1 <= flash_yellow ? 7'b1111111 : 7'b0010010;  // 5
+                        end else begin
+                            timer <= timer - 1;
+                            if(!flash_yellow) begin
+                                case (timer / 10)
+                                    4'd0: seg2 = 7'b1000000; // display 0
+                                    4'd1: seg2 = 7'b1111001; // display 1
+                                    4'd2: seg2 = 7'b0100100; // display 2
+                                    4'd3: seg2 = 7'b0110000; // display 3
+                                    4'd4: seg2 = 7'b0011001; // display 4
+                                    4'd5: seg2 = 7'b0010010; // display 5
+                                    4'd6: seg2 = 7'b0000010; // display 6
+                                    4'd7: seg2 = 7'b1111000; // display 7
+                                    4'd8: seg2 = 7'b0000000; // display 8
+                                    4'd9: seg2 = 7'b0010000; // display 9
+                                endcase                        
+                                case (timer % 10)
+                                    4'd0: seg1 = 7'b1000000; // display 0
+                                    4'd1: seg1 = 7'b1111001; // display 1
+                                    4'd2: seg1 = 7'b0100100; // display 2
+                                    4'd3: seg1 = 7'b0110000; // display 3
+                                    4'd4: seg1 = 7'b0011001; // display 4
+                                    4'd5: seg1 = 7'b0010010; // display 5
+                                    4'd6: seg1 = 7'b0000010; // display 6
+                                    4'd7: seg1 = 7'b1111000; // display 7
+                                    4'd8: seg1 = 7'b0000000; // display 8
+                                    4'd9: seg1 = 7'b0010000; // display 9
+                                endcase                        
+                            end
+                        end 
+                    end                
+                        RED2: begin
+                            if (timer == 0) begin
+                                state <= GREEN;
+                                timer <= 10;    // green light lasts for 10 seconds
+                                led1 <= 3'b010; // green light on for vehicle traffic on the current road
+                                led2 <= 3'b001; // red light on for vehicle traffic on the intersecting road
+                                seg2 <= 7'b1111001; // 1
+                                seg1 <= 7'b1000000; // 0
+                            end else begin
+                                timer <= timer - 1;
+                                case (timer / 10)
+                                    4'd0: seg2 = 7'b1000000; // display 0
+                                    4'd1: seg2 = 7'b1111001; // display 1
+                                    4'd2: seg2 = 7'b0100100; // display 2
+                                    4'd3: seg2 = 7'b0110000; // display 3
+                                    4'd4: seg2 = 7'b0011001; // display 4
+                                    4'd5: seg2 = 7'b0010010; // display 5
+                                    4'd6: seg2 = 7'b0000010; // display 6
+                                    4'd7: seg2 = 7'b1111000; // display 7
+                                    4'd8: seg2 = 7'b0000000; // display 8
+                                    4'd9: seg2 = 7'b0010000; // display 9
+                                endcase                        
+                                case (timer % 10)
+                                    4'd0: seg1 = 7'b1000000; // display 0
+                                    4'd1: seg1 = 7'b1111001; // display 1
+                                    4'd2: seg1 = 7'b0100100; // display 2
+                                    4'd3: seg1 = 7'b0110000; // display 3
+                                    4'd4: seg1 = 7'b0011001; // display 4
+                                    4'd5: seg1 = 7'b0010010; // display 5
+                                    4'd6: seg1 = 7'b0000010; // display 6
+                                    4'd7: seg1 = 7'b1111000; // display 7
+                                    4'd8: seg1 = 7'b0000000; // display 8
+                                    4'd9: seg1 = 7'b0010000; // display 9
+                                endcase                        
+                            end                             
+                        end 
+                        GREEN: begin 
+                            if (timer == 0) begin 
+                                state <= YELLOW; 
+                                timer <= 5;     // yellow light lasts for 5 seconds 
+                                led1 <= 3'b011; // yellow light on for vehicle traffic on the current road 
+                                led2 <= 3'b001; // still red light for vehicle traffic on the intersecting road
+                                seg2 <= 7'b1000000; // 0
+                                seg1 <= 7'b0010010; // 5
+                            end else begin 
+                                timer <= timer - 1;
+                                if(!flash_yellow) begin
+                                    case (timer / 10)
+                                        4'd0: seg2 = 7'b1000000; // display 0
+                                        4'd1: seg2 = 7'b1111001; // display 1
+                                        4'd2: seg2 = 7'b0100100; // display 2
+                                        4'd3: seg2 = 7'b0110000; // display 3
+                                        4'd4: seg2 = 7'b0011001; // display 4
+                                        4'd5: seg2 = 7'b0010010; // display 5
+                                        4'd6: seg2 = 7'b0000010; // display 6
+                                        4'd7: seg2 = 7'b1111000; // display 7
+                                        4'd8: seg2 = 7'b0000000; // display 8
+                                        4'd9: seg2 = 7'b0010000; // display 9
+                                    endcase                        
+                                    case (timer % 10)
+                                        4'd0: seg1 = 7'b1000000; // display 0
+                                        4'd1: seg1 = 7'b1111001; // display 1
+                                        4'd2: seg1 = 7'b0100100; // display 2
+                                        4'd3: seg1 = 7'b0110000; // display 3
+                                        4'd4: seg1 = 7'b0011001; // display 4
+                                        4'd5: seg1 = 7'b0010010; // display 5
+                                        4'd6: seg1 = 7'b0000010; // display 6
+                                        4'd7: seg1 = 7'b1111000; // display 7
+                                        4'd8: seg1 = 7'b0000000; // display 8
+                                        4'd9: seg1 = 7'b0010000; // display 9
+                                    endcase                        
+                                end
+                            end  
+                        end  
+                        YELLOW: begin  
+                            if (timer == 0) begin  
+                                state <= YELLOW2;  
+                                timer <= 15;    // red light lasts for 15 seconds  
+                                led1 <= 3'b001; // red light on for vehicle traffic on the current road 
+                                led2 <= 3'b010; // green light on for vehicle traffic on the intersecting road 
+                                seg2 <= 7'b1111001; // 1
+                                seg1 <= 7'b0010010; // 5
+                            end else begin  
+                                timer <= timer-1;
+                                if(!flash_yellow) begin
+                                    case (timer / 10)
+                                        4'd0: seg2 = 7'b1000000; // display 0
+                                        4'd1: seg2 = 7'b1111001; // display 1
+                                        4'd2: seg2 = 7'b0100100; // display 2
+                                        4'd3: seg2 = 7'b0110000; // display 3
+                                        4'd4: seg2 = 7'b0011001; // display 4
+                                        4'd5: seg2 = 7'b0010010; // display 5
+                                        4'd6: seg2 = 7'b0000010; // display 6
+                                        4'd7: seg2 = 7'b1111000; // display 7
+                                        4'd8: seg2 = 7'b0000000; // display 8
+                                        4'd9: seg2 = 7'b0010000; // display 9
+                                    endcase                        
+                                    case (timer % 10)
+                                        4'd0: seg1 = 7'b1000000; // display 0
+                                        4'd1: seg1 = 7'b1111001; // display 1
+                                        4'd2: seg1 = 7'b0100100; // display 2
+                                        4'd3: seg1 = 7'b0110000; // display 3
+                                        4'd4: seg1 = 7'b0011001; // display 4
+                                        4'd5: seg1 = 7'b0010010; // display 5
+                                        4'd6: seg1 = 7'b0000010; // display 6
+                                        4'd7: seg1 = 7'b1111000; // display 7
+                                        4'd8: seg1 = 7'b0000000; // display 8
+                                        4'd9: seg1 = 7'b0010000; // display 9
+                                    endcase                        
+                                end  
+                            end   
+                        end
+                        YELLOW2: begin  
+                            if (timer == 0) begin  
+                                state <= RED2;  
+                                timer <= 5;    // yellow2 light lasts for 5 seconds  
+                                led1 <= 3'b001; // red light on for vehicle traffic on the current road 
+                                led2 <= 3'b011; // yellow light on for vehicle traffic on the intersecting road
+                                seg2 <= 7'b1000000; // 0
+                                seg1 <= 7'b0010010; // 5
+                            end else begin  
+                                timer <= timer - 1;
+                                case (timer / 10)
+                                    4'd0: seg2 = 7'b1000000; // display 0
+                                    4'd1: seg2 = 7'b1111001; // display 1
+                                    4'd2: seg2 = 7'b0100100; // display 2
+                                    4'd3: seg2 = 7'b0110000; // display 3
+                                    4'd4: seg2 = 7'b0011001; // display 4
+                                    4'd5: seg2 = 7'b0010010; // display 5
+                                    4'd6: seg2 = 7'b0000010; // display 6
+                                    4'd7: seg2 = 7'b1111000; // display 7
+                                    4'd8: seg2 = 7'b0000000; // display 8
+                                    4'd9: seg2 = 7'b0010000; // display 9
+                                endcase                        
+                                case (timer % 10)
+                                    4'd0: seg1 = 7'b1000000; // display 0
+                                    4'd1: seg1 = 7'b1111001; // display 1
+                                    4'd2: seg1 = 7'b0100100; // display 2
+                                    4'd3: seg1 = 7'b0110000; // display 3
+                                    4'd4: seg1 = 7'b0011001; // display 4
+                                    4'd5: seg1 = 7'b0010010; // display 5
+                                    4'd6: seg1 = 7'b0000010; // display 6
+                                    4'd7: seg1 = 7'b1111000; // display 7
+                                    4'd8: seg1 = 7'b0000000; // display 8
+                                    4'd9: seg1 = 7'b0010000; // display 9
+                                endcase                        
+                            end   
+                        end                   
+                    endcase   
+                end else begin 
+                    clk_cnt <= clk_cnt+1; 
+                end
+            end    
+            if (btn[2]) begin
+                flash_yellow <= 1;
+            end
+            if (flash_yellow) begin
+                seg2 = 7'b1111111;
+                seg1 = 7'b1111111;
+                if(flash_cnt < FLASH_PERIOD / 2) begin
+                    led1 = 3'b011;
+                    led2 = 3'b011;
+                end else begin
+                    led1 = 3'b000;
+                    led2 = 3'b000;
+                end
+                if (flash_cnt == FLASH_PERIOD - 1) begin
+                    flash_cnt <= 0;  
+                end else begin
+                    flash_cnt <= flash_cnt + 1;
+                end 
+            end
+        end
+    end 
+end 
+
+endmodule
+
+

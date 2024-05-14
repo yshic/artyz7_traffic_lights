@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:03:12 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Tue Jan  9 20:15:59 2024
+# Process ID: 15680
+# Current directory: C:/Users/Papa/Desktop/2/HK223/Verilog/Labs/Assignment/assignment/traffic_light
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent14992 C:\Users\Papa\Desktop\2\HK223\Verilog\Labs\Assignment\assignment\traffic_light\traffic_light.xpr
+# Log file: C:/Users/Papa/Desktop/2/HK223/Verilog/Labs/Assignment/assignment/traffic_light/vivado.log
+# Journal file: C:/Users/Papa/Desktop/2/HK223/Verilog/Labs/Assignment/assignment/traffic_light\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/Papa/Desktop/2/HK223/Verilog/Labs/Assignment/assignment/traffic_light/traffic_light.xpr
+update_compile_order -fileset sources_1
